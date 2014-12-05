@@ -16,12 +16,18 @@ First and foremost, you need 7zip for this. If you don't have 7zip installed, yo
 - The password will be displayed on the screen
  
 ## FAQs
-**Q:** 7z is not a recognized command
+**Q:** Error "'7z' is not recognized as an internal or external command, operable program or batch file."
 
 **A:** You don't have 7zip installed or the path to 7zip is not setup correctly. Check the value of the PATH variable in the code. You will need to change the value I have provided with the path to 7z.exe (this example is from 7zip Portable)
 ```
 set PATH=D:\Prog\7z\App\7-Zip;%PATH%
 ```
+
+**Q:** The password provided does not work
+
+**A:** I noticed a similar error with zip files. In some cases, inspite of a wrong password, the resultant file is non-empty. The filesize would be a < 100 bytes and would be junk characters. To prevent such false positives, you can make the following changes
+* Open filesize.bat and change the line ```set minbytesize=0``` to a different number closer (and yet lesser) to the actual filesize. 
+* If the sample file you are extracting is a small one (such as a readme.txt), choose a different file that is greater than 10KB
 
 ## Support
 If you need any help in executing this or want to modify this, you can either raise an issue on github or drop a note at my website [Reach Out] (http://thecodeisclear.in/reach-out/)
